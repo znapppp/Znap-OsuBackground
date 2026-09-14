@@ -1,5 +1,21 @@
 [
     {
+        "uniqueID": "EnableBeatmapVideo",
+        "type": "checkbox",
+        "title": "Enable Beatmap Video",
+        "description": "Play video background if available (.mp4). Falls back to cover image if not.",
+        "options": "",
+        "value": true
+    },
+    {
+        "uniqueID": "VideoOnlyInMenu",
+        "type": "checkbox",
+        "title": "Video Only in Song Selection Menu",
+        "description": "Play video only during song selection and menu preview, and switch to static cover image during gameplay.",
+        "options": "",
+        "value": false
+    },
+    {
         "uniqueID": "BackgroundDim",
         "type": "number",
         "title": "Background Dim [%]",
@@ -78,21 +94,5 @@
         "description": "Shadow blur around the game border in px (0 for sharp cut, e.g. 15 for soft shadow).",
         "options": [],
         "value": "0"
-    },
-    {
-        "uniqueID": "EnableBeatmapVideo",
-        "type": "checkbox",
-        "title": "Enable Beatmap Video",
-        "description": "Play video background if available (.mp4). Falls back to cover image if not.",
-        "options": "",
-        "value": true
-    },
-    {
-        "uniqueID": "VideoOnlyInMenu",
-        "type": "checkbox",
-        "title": "Video Only in Menu",
-        "description": "Play video only during song selection and menu preview, and switch to static cover image during gameplay.",
-        "options": "",
-        "value": false
     }
 ]
