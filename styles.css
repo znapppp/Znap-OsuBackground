@@ -1,0 +1,86 @@
+:root {
+    --game-w: 1440px;
+    --game-h: 900px;
+    --game-half-w: 720px;
+    --game-half-h: 450px;
+    --game-offset-x: 0px;
+    --game-offset-y: 0px;
+    --game-shadow: 0px;
+    --bg-blur: 0px;
+    --bg-brightness: 35%;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: transparent !important;
+    pointer-events: none;
+    user-select: none;
+}
+
+#background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+#background.cutout {
+    clip-path: polygon(
+        evenodd,
+        0 0,
+        100% 0,
+        100% 100%,
+        0 100%,
+        0 0,
+        calc(50% + var(--game-offset-x) - var(--game-half-w)) calc(50% + var(--game-offset-y) - var(--game-half-h)),
+        calc(50% + var(--game-offset-x) + var(--game-half-w)) calc(50% + var(--game-offset-y) - var(--game-half-h)),
+        calc(50% + var(--game-offset-x) + var(--game-half-w)) calc(50% + var(--game-offset-y) + var(--game-half-h)),
+        calc(50% + var(--game-offset-x) - var(--game-half-w)) calc(50% + var(--game-offset-y) + var(--game-half-h)),
+        calc(50% + var(--game-offset-x) - var(--game-half-w)) calc(50% + var(--game-offset-y) - var(--game-half-h))
+    );
+}
+
+#bg, #bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    filter: blur(var(--bg-blur)) brightness(var(--bg-brightness));
+}
+
+#bg {
+    z-index: 0;
+}
+
+#bg-video {
+    z-index: 1;
+}
+
+#game-shadow {
+    position: absolute;
+    top: calc(50% + var(--game-offset-y));
+    left: calc(50% + var(--game-offset-x));
+    transform: translate(-50%, -50%);
+    width: var(--game-w);
+    height: var(--game-h);
+    pointer-events: none;
+    box-shadow: 0 0 var(--game-shadow) rgba(0, 0, 0, 0.8);
+}
+
+#background:not(.cutout) ~ #game-shadow {
+    display: none;
+}

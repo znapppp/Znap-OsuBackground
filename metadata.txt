@@ -1,0 +1,8 @@
+Usecase: ingame, obs-overlay
+Name: Znap-OsuBackground
+Version: 1.0.0
+Author: Znap
+CompatibleWith: tosu
+Resolution: 1920x1080
+authorLinks: 
+Notes: Custom background overlay

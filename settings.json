@@ -1,0 +1,98 @@
+[
+    {
+        "uniqueID": "BackgroundDim",
+        "type": "number",
+        "title": "Background Dim [%]",
+        "description": "Dim the background brightness (0 = original brightness, 100 = completely dark, recommended: 60-80).",
+        "options": [],
+        "value": "65"
+    },
+    {
+        "uniqueID": "BackgroundAnimationDuration",
+        "type": "number",
+        "title": "Animation Duration [ms]",
+        "description": "Transition duration in milliseconds.",
+        "options": [],
+        "value": "500"
+    },
+    {
+        "uniqueID": "BackgroundSwitchTime",
+        "type": "number",
+        "title": "Switch Time [percent]",
+        "description": "When to switch background.",
+        "options": [],
+        "value": "20"
+    },
+    {
+        "uniqueID": "BackgroundBlurAnimation",
+        "type": "text",
+        "title": "Blur Animation [pixel]",
+        "description": "(Animation Progress %)-(Current Blur px)/(Another Animation Progress)",
+        "options": [],
+        "value": "0-30/80-0/100-0"
+    },
+    {
+        "uniqueID": "BackgroundBrightnessAnimation",
+        "type": "text",
+        "title": "Brightness Animation [percent]",
+        "description": "(Animation Progress %)-(Current Brightness %)/(Another Animation Progress)",
+        "options": [],
+        "value": "0-60/20-20/100-35"
+    },
+    {
+        "uniqueID": "GameWidth",
+        "type": "number",
+        "title": "Game Width [px]",
+        "description": "Width of your in-game resolution (default 1440). Set to 0 to disable cutout.",
+        "options": [],
+        "value": "1440"
+    },
+    {
+        "uniqueID": "GameHeight",
+        "type": "number",
+        "title": "Game Height [px]",
+        "description": "Height of your in-game resolution (default 900). Set to 0 to disable cutout.",
+        "options": [],
+        "value": "900"
+    },
+    {
+        "uniqueID": "GameOffsetX",
+        "type": "number",
+        "title": "Game Offset X [px]",
+        "description": "Horizontal offset from screen center in pixels (0 = center).",
+        "options": [],
+        "value": "0"
+    },
+    {
+        "uniqueID": "GameOffsetY",
+        "type": "number",
+        "title": "Game Offset Y [px]",
+        "description": "Vertical offset from screen center in pixels (0 = center).",
+        "options": [],
+        "value": "0"
+    },
+    {
+        "uniqueID": "GameBorderShadow",
+        "type": "number",
+        "title": "Border Shadow / Glow [px]",
+        "description": "Shadow blur around the game border in px (0 for sharp cut, e.g. 15 for soft shadow).",
+        "options": [],
+        "value": "0"
+    },
+    {
+        "uniqueID": "EnableBeatmapVideo",
+        "type": "checkbox",
+        "title": "Enable Beatmap Video",
+        "description": "Play video background if available (.mp4). Falls back to cover image if not.",
+        "options": "",
+        "value": true
+    },
+    {
+        "uniqueID": "VideoOnlyInMenu",
+        "type": "checkbox",
+        "title": "Video Only in Menu",
+        "description": "Play video only during song selection and menu preview, and switch to static cover image during gameplay.",
+        "options": "",
+        "value": false
+    }
+]
