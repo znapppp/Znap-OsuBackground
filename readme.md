@@ -18,4 +18,4 @@ Custom osu! background overlay for OBS, compatible with **tosu**.
 - Real-time sync with tosu websocket
 
 ## Credits
-- Based on OBSDecoratePack background overlay by Citrusis
+- Based on [OBSDecoratePack](https://github.com/Citrusis/OBSDecoratePack) background overlay by [Citrusis](https://github.com/Citrusis)
