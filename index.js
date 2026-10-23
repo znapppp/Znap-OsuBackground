@@ -1,5 +1,8 @@
 window.COUNTER_PATH = window.COUNTER_PATH || 'Znap-ทำเอง';
-const WS_HOST = window.location.host || '127.0.0.1:24050';
+// Served by tosu over http -> use its host; hosted elsewhere (e.g. GitHub Pages) -> local tosu, overridable with ?host=
+const WS_HOST = new URLSearchParams(window.location.search).get('host')
+    || (window.location.protocol === 'http:' && window.location.host)
+    || '127.0.0.1:24050';
 
 import WebSocketManager from './socket.js';
 const socket = new WebSocketManager(WS_HOST);
@@ -466,7 +469,7 @@ let currentUpdateId = 0;
 function updateBackground(beatmapChecksum) {
     const background = document.querySelector('#bg');
     const updateId = ++currentUpdateId;
-    const host = window.location.host || '127.0.0.1:24050';
+    const host = WS_HOST;
 
     if (!beatmapChecksum) {
         imageFade(background, '');
@@ -559,7 +562,7 @@ async function updateVideo(beatmapFolder, beatmapFile, checksum) {
 
     lastAttemptedChecksum = checksum;
     const updateId = ++currentVideoUpdateId;
-    const host = window.location.host || '127.0.0.1:24050';
+    const host = WS_HOST;
 
     try {
         const osuUrl = `http://${host}/files/beatmap/${encodeURIComponent(beatmapFolder)}/${encodeURIComponent(beatmapFile)}`;
