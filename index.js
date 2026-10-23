@@ -1,6 +1,7 @@
-window.COUNTER_PATH = window.COUNTER_PATH || 'Znap-ทำเอง';
+window.COUNTER_PATH = window.COUNTER_PATH || 'Znap-OsuBackground';
 // Served by tosu over http -> use its host; hosted elsewhere (e.g. GitHub Pages) -> local tosu, overridable with ?host=
-const WS_HOST = new URLSearchParams(window.location.search).get('host')
+const params = new URLSearchParams(window.location.search);
+const WS_HOST = params.get('host')
     || (window.location.protocol === 'http:' && window.location.host)
     || '127.0.0.1:24050';
 
@@ -8,18 +9,18 @@ import WebSocketManager from './socket.js';
 const socket = new WebSocketManager(WS_HOST);
 
 const cache = {
-    BackgroundDim: 65,
+    BackgroundDim: params.has('dim') ? Number(params.get('dim')) : 65,
     BackgroundAnimationDuration: 500,
     BackgroundSwitchTime: 20,
     BackgroundBlurAnimation: '0-30/80-0/100-0',
     BackgroundBrightnessAnimation: '0-60/20-20/100-35',
-    GameWidth: 1440,
-    GameHeight: 900,
-    GameOffsetX: 0,
-    GameOffsetY: 0,
-    GameBorderShadow: 0,
+    GameWidth: params.has('w') ? Number(params.get('w')) : 1280,
+    GameHeight: params.has('h') ? Number(params.get('h')) : 720,
+    GameOffsetX: params.has('ox') ? Number(params.get('ox')) : 0,
+    GameOffsetY: params.has('oy') ? Number(params.get('oy')) : 0,
+    GameBorderShadow: params.has('shadow') ? Number(params.get('shadow')) : 0,
     EnableBeatmapVideo: true,
-    VideoOnlyInMenu: false
+    VideoOnlyInMenu: true
 };
 
 updateCutout(cache.GameWidth, cache.GameHeight, cache.GameOffsetX, cache.GameOffsetY, cache.GameBorderShadow);
@@ -138,7 +139,7 @@ socket.commands((data) => {
 });
 
 // Request settings from server
-const counterPath = window.COUNTER_PATH || 'Znap-ทำเอง';
+const counterPath = window.COUNTER_PATH || 'Znap-OsuBackground';
 socket.sendCommand('getSettings', counterPath);
 if (counterPath !== encodeURI(counterPath)) {
     socket.sendCommand('getSettings', encodeURI(counterPath));
@@ -233,12 +234,16 @@ function updateCutout(w, h, offsetX = 0, offsetY = 0, shadow = 0) {
     const shadowElement = document.getElementById('game-shadow');
 
     if (width > 0 && height > 0) {
-        document.documentElement.style.setProperty('--game-w', `${width}px`);
-        document.documentElement.style.setProperty('--game-h', `${height}px`);
-        document.documentElement.style.setProperty('--game-half-w', `${width / 2}px`);
-        document.documentElement.style.setProperty('--game-half-h', `${height / 2}px`);
-        document.documentElement.style.setProperty('--game-offset-x', `${offX}px`);
-        document.documentElement.style.setProperty('--game-offset-y', `${offY}px`);
+        const wVw = (width / 1920) * 100;
+        const hVh = (height / 1080) * 100;
+        const offXVw = (offX / 1920) * 100;
+        const offYVh = (offY / 1080) * 100;
+        document.documentElement.style.setProperty('--game-w', `${wVw}vw`);
+        document.documentElement.style.setProperty('--game-h', `${hVh}vh`);
+        document.documentElement.style.setProperty('--game-half-w', `${wVw / 2}vw`);
+        document.documentElement.style.setProperty('--game-half-h', `${hVh / 2}vh`);
+        document.documentElement.style.setProperty('--game-offset-x', `${offXVw}vw`);
+        document.documentElement.style.setProperty('--game-offset-y', `${offYVh}vh`);
         document.documentElement.style.setProperty('--game-shadow', `${shadowPx}px`);
         if (bgElement) bgElement.classList.add('cutout');
         if (shadowElement) shadowElement.style.display = shadowPx > 0 ? 'block' : 'none';

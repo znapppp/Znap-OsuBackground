@@ -18,7 +18,7 @@ class WebSocketManager {
     let INTERVAL = '';
 
     const that = this;
-    const counterPath = window.COUNTER_PATH || 'Znap-ทำเอง';
+    const counterPath = window.COUNTER_PATH || 'Znap-OsuBackground';
     this.sockets[url] = new WebSocket(`ws://${this.host}${url}?l=${encodeURIComponent(counterPath)}`);
 
     this.sockets[url].onopen = () => {

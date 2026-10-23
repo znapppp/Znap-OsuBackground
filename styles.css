@@ -1,10 +1,10 @@
 :root {
-    --game-w: 1440px;
-    --game-h: 900px;
-    --game-half-w: 720px;
-    --game-half-h: 450px;
-    --game-offset-x: 0px;
-    --game-offset-y: 0px;
+    --game-w: 66.6667vw;
+    --game-h: 66.6667vh;
+    --game-half-w: 33.3333vw;
+    --game-half-h: 33.3333vh;
+    --game-offset-x: 0vw;
+    --game-offset-y: 0vh;
     --game-shadow: 0px;
     --bg-blur: 0px;
     --bg-brightness: 35%;
