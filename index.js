@@ -20,7 +20,7 @@ const cache = {
     GameOffsetY: params.has('oy') ? Number(params.get('oy')) : 0,
     GameBorderShadow: params.has('shadow') ? Number(params.get('shadow')) : 0,
     EnableBeatmapVideo: true,
-    VideoOnlyInMenu: true
+    VideoOnlyInMenu: false
 };
 
 updateCutout(cache.GameWidth, cache.GameHeight, cache.GameOffsetX, cache.GameOffsetY, cache.GameBorderShadow);
